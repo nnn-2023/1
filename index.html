@@ -22,9 +22,7 @@
           >Test</span
         >
       </h1>
-      <!-- Jesus how are you even alive ? Probabilité d'aller en enfer: très élevée -->
     </header>
-
     <main class="px-8">
       <div class="max-w-5xl mx-auto flex flex-col text-center">
         <h2
@@ -143,12 +141,13 @@
     function updateQuestions(i) {
       score += i;
       if (curr === 19) {
-        let percentage = Math.round(((score - 20) / 58) * 100);
+        let percentage = Math.round((score / 42) * 100);
+        console.log(score);
         let proba = "Faible";
         if (percentage > 30) proba = "Modérée";
-        else if (percentage > 40) proba = "Moyenne";
-        else if (percentage > 50) proba = "Élevée";
-        else if (percentage > 70) proba = "Très élevée";
+        if (percentage > 40) proba = "Moyenne";
+        if (percentage > 50) proba = "Élevée";
+        if (percentage > 70) proba = "Très élevée";
         console.log(proba);
         qu.innerHTML = `<h1 class="text-4xl text-white font-semibold">
         NoNut<span
@@ -163,6 +162,16 @@
         out = `<div class="flex flex-col items-center p-4 bg-[#0e0e0e] rounded">
         <p>Probabilité d'aller en enfer</p>
         <p>${proba}</p>
+       </div>
+       <div class="flex flex-col gap-2 items-center mt-8">
+        <h3 class="text-xl font-medium text-zinc-100">
+          Besoin d'aide pour arrêter ?
+        </h3>
+        <a
+          href="https://discord.gg/epQHMrxY3g"
+          class="bg-gradient-to-tr from-[#ff9900] via-amber-500 to-amber-400 hover:to-amber-300 text-zinc-950 text-xl px-4 py-2 rounded-xl rounded font-medium"
+          >Rejoindre</a
+        >
       </div>`;
         console.log(score);
       } else {
@@ -174,7 +183,7 @@
 
         qu.innerText = questions[curr].question;
 
-        let i = 0;
+        let i = -1;
         questions[curr].options.forEach((answer) => {
           i += 1;
 
